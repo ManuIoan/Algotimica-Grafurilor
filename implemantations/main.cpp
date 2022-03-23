@@ -9,7 +9,7 @@ ifstream fin("date.in");
 
 
 //matricea de adiacenta
-int i, j, ex, b[100][100];
+int i, j, ex, b[100][100], aux;
 void mda(int n)
 {
     int a[n+1][n+1];
@@ -153,6 +153,69 @@ void incidence_matrix(int n, int a[100][100])
 
 
 }
+void nc(int n, int a[100][100])
+{int nr, b[n+1];
+    for(i=0;i<n;i++)
+    {
+
+    nr=0;
+    for(j=0;j<n;j++)
+    {
+     if(a[i][j]==1)
+            nr++;
+
+    }
+    b[i]=nr;
+
+    }
+    int c[n+1];
+    for(i=0;i<n;i++)
+        c[i]=i;
+        cout<<endl;
+        for(i=0;i<n;i++)
+            cout<<b[i]<<" ";
+    for(i=0;i<n-1;i++)
+        for(j=i+1;j<n;j++)
+        if(b[j]<b[i])
+        {
+           aux=b[i];
+        b[i]=b[j];
+        b[j]=aux;
+        aux=c[i];
+        c[i]=c[j];
+        c[j]=aux;
+
+        }
+        cout<<endl;
+        for(i=0;i<n;i++)
+            cout<<c[i]<< " ";
+
+
+
+}
+void prb16(int n, int a[100][100])
+{
+    int k,p;
+    cout<<"Cati prieteni are persoana: ";
+    cin>>k;
+    int s=0;
+    for(i=0;i<n;i++)
+        if(a[k][i]==1)
+         s++;
+    cout<<endl;
+    cout<<"Persoana "<<k<<" are "<<s<<" prieteni";
+    cin>>p;
+    cout<<"Urmatoarele persoana au minim "<<p<<" prieteni:";
+    for(i=0;i<n;i++)
+    {
+        s=0;
+        for(j=0;j<n;j++)
+            if(a[i][j]==1)s++;
+        if(s>=p)
+            cout<<i;
+    }
+
+}
 
 int main()
 {
@@ -166,11 +229,14 @@ fin>>n;
 //reading from file
   int a[100][100];
   mda_file(n, a);
- // write(n, a);
+  write(n, a);
  //adjacency_list(n,a);
 //linked_list(n, a);
 //incidence_list(n,a);
-incidence_matrix(n, a);
+//incidence_matrix(n, a);
+//nc(n,a);
+prb16(n,a);
+
 
     return 0;
 }
