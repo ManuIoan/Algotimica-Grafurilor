@@ -82,6 +82,39 @@ void adjacency_list(int n, int a[100][100])
 
 
 }
+void linked_list(int n, int a[100][100])
+{
+      for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+    {
+
+        if(a[i][j]==1)
+            cout<<"["<<i<<","<<j<<"]"<<" ";
+
+    }
+
+    }
+
+
+}
+
+void incidence_list(int n, int a[100][100])
+{
+
+  for(i=0;i<n;i++)
+    {   cout<<i<<"=";
+        for(j=0;j<n;j++)
+    {
+
+        if(a[i][j]==1)
+           cout<<"["<<i<<","<<j<<"]"<<" ";
+
+    }
+    cout<<endl;
+    }
+
+}
 
 int main()
 {
@@ -96,9 +129,9 @@ fin>>n;
   int a[100][100];
   mda_file(n, a);
  // write(n, a);
- adjacency_list(n,a);
-
-
+ //adjacency_list(n,a);
+//linked_list(n, a);
+incidence_list(n,a);
 
 
     return 0;
