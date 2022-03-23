@@ -1,6 +1,12 @@
 #include <iostream>
+#include <fstream>
+
 
 using namespace std;
+
+ifstream fin("date.in");
+
+
 
 //matricea de adiacenta
 int i, j, ex;
@@ -35,6 +41,27 @@ void mda(int n)
     }
 
 }
+int mda_file(int n, int a[100][100])
+{
+    for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+    fin>>a[i][j];
+
+
+}
+
+void write(int n, int a[100][100])
+{
+      for(i=0;i<n;i++)
+{
+
+
+    for(j=0;j<n;j++)
+    cout<<a[i][j]<<" ";
+  cout<<endl;
+}
+
+}
 
 
 int main()
@@ -42,8 +69,17 @@ int main()
 
 
   int n;
-cout<<"Cate noduri exista in graf?";
-cin>>n;
+fin>>n;
+/* readfing from keyboard
     mda(n);
+    */
+//reading from file
+  int a[100][100];
+  mda_file(n, a);
+  write(n, a);
+
+
+
+
     return 0;
 }
