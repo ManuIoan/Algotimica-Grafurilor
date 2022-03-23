@@ -9,7 +9,7 @@ ifstream fin("date.in");
 
 
 //matricea de adiacenta
-int i, j, ex, b[100][100], aux;
+int i, j, k, l, ex, b[100][100],a[100][100], aux;
 void mda(int n)
 {
     int a[n+1][n+1];
@@ -64,7 +64,7 @@ void write(int n, int a[100][100])
     }
   cout<<endl;
 }
-cout<<endl<<"Avem un numar de "<<s/2<<" muchii.";
+
 }
 void adjacency_list(int n, int a[100][100])
 {
@@ -193,7 +193,7 @@ void nc(int n, int a[100][100])
 
 
 }
-void prb16(int n, int a[100][100])
+void prb15(int n, int a[100][100])
 {
     int k,p;
     cout<<"Cati prieteni are persoana: ";
@@ -212,31 +212,80 @@ void prb16(int n, int a[100][100])
         for(j=0;j<n;j++)
             if(a[i][j]==1)s++;
         if(s>=p)
-            cout<<i;
+            cout<<i<<" ";
     }
 
 }
+int grad(int i,int n, int a[100][100])
+{
+    int sum=0;
+for(j=0;j<n;j++)
+        if(a[i][j]==1)
+             sum++;
+return sum;
+}
+ int prb16(int &n,int &m, int a[100][100], int b[100][100])
+ {
+     for(i=0;i<n;i++)
+        if(grad(i,n,a)==0)
+     {
+         b[m-1][m]= 1;
+         b[m][m-1] =1;
+         m++;
+         for(j=i;j<n;j++)
+         for(k=0;k<n;k++)
+         a[j][k]=a[j+1][k];
+         n--;
+         i--;
+
+
+
+
+     }
+
+
+ }
+
+ void mdao(int n,int a[100][100])
+ {
+
+
+ }
+
+
+
 
 int main()
 {
 
 
   int n;
-fin>>n;
+  fin>>n;
 /* readfing from keyboard
     mda(n);
     */
 //reading from file
-  int a[100][100];
+
   mda_file(n, a);
   write(n, a);
+
  //adjacency_list(n,a);
 //linked_list(n, a);
 //incidence_list(n,a);
 //incidence_matrix(n, a);
 //nc(n,a);
-prb16(n,a);
-
+//prb15(n,a);
+/*
+fin>>m;
+  mda_file(m,b);
+cout<<endl;
+  write(m,b);
+prb16(n,m,a,b);
+cout<<endl;
+write(n,a);
+cout<<endl;
+write(m,b);
+*/
 
     return 0;
 }
