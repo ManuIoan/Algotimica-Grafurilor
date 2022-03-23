@@ -9,7 +9,7 @@ ifstream fin("date.in");
 
 
 //matricea de adiacenta
-int i, j, ex;
+int i, j, ex, b[100][100];
 void mda(int n)
 {
     int a[n+1][n+1];
@@ -116,6 +116,44 @@ void incidence_list(int n, int a[100][100])
 
 }
 
+void incidence_matrix(int n, int a[100][100])
+{
+    int m=0;
+     for(i=0;i<n;i++)
+        for(j=i+1;j<n;j++)
+        {
+            if(a[i][j]==1)
+                m++;
+
+    }
+    //getting the number of links(m)
+
+        int k=0;
+      for(i=0;i<n;i++)
+        for(j=i+1;j<n;j++)
+             {
+            if(a[i][j]==1)
+               {
+
+                b[i][k]=1;
+                b[j][k]=1;
+                k++;
+               }
+
+        }
+
+
+
+      for(i=0;i<n;i++){
+        for(j=0;j<m;j++)
+            cout<<b[i][j]<<" ";
+
+    cout<<endl;
+        }
+
+
+}
+
 int main()
 {
 
@@ -131,8 +169,8 @@ fin>>n;
  // write(n, a);
  //adjacency_list(n,a);
 //linked_list(n, a);
-incidence_list(n,a);
-
+//incidence_list(n,a);
+incidence_matrix(n, a);
 
     return 0;
 }
