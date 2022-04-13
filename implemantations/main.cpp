@@ -19,17 +19,17 @@ void mda(int n)
         a[i][j]=0;
     else
     {
-        cout<<"Exista nod intre "<<i<<"si "<<j<<" ?0/1";
-        cin>>ex;
+
+        fin>>ex;
         if(ex)
            {
-           a[j][i]=1;
            a[i][j]=1;
+
            }
            else
             {
-           a[j][i]=0;
            a[i][j]=0;
+
            }
 
 
